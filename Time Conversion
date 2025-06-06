@@ -1,0 +1,41 @@
+Time Conversion
+Given a time in 12-hour AM/PM format, convert it to military (24-hour) time.
+
+Note
+12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
+
+12:00:00PM on a 12-hour clock is 12:00:00 on a 24-hour clock.
+
+Input Format
+First line contains a 12-hour clock time as a string s.
+
+import java.util.*;
+
+public class Main {
+    static void timeConversion(String s) {
+        //Write your code here
+        int n=s.length();
+        StringBuilder sb=new StringBuilder(s.substring(0,n-2));
+         int hour= Integer.parseInt(s.substring(0,2));
+         String period = s.substring(n-2);
+         if(period.equals("AM")){
+          if(hour== 12){
+            sb.replace(0,2,"00");
+          }
+         }
+         else {
+            if(hour!=12){
+                hour+=12;
+                sb.replace(0,2,String.valueOf(hour));
+            }
+         }
+         System.out.println(sb);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        timeConversion(str);
+        sc.close();
+    }
+}
